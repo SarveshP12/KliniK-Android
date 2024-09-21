@@ -8,24 +8,17 @@
     tools:context=".MainActivity"
     android:background="@drawable/med_background">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="90dp"
-            android:layout_height="60dp"/>
-
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"/>
-    </LinearLayout>
-
-    <Button
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:src="@drawable/klinik_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"/>
+    <Button
+        android:id="@+id/btn_open_new_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="400dp"/>
 
