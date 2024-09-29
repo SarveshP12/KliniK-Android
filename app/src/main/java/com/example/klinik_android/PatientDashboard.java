@@ -59,6 +59,8 @@ public class PatientDashboard extends AppCompatActivity {
                             if (username != null) {
                                 usernameTextView.setText("Welcome, " + username);
                             }
+                        } else {
+                            Toast.makeText(PatientDashboard.this, "No such user found", Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         Toast.makeText(PatientDashboard.this, "Error fetching user data", Toast.LENGTH_SHORT).show();
