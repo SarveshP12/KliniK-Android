@@ -1,15 +1,11 @@
 package com.example.klinik_android;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class PatientDashboard extends AppCompatActivity {
@@ -17,6 +13,7 @@ public class PatientDashboard extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
     private TextView usernameTextView;
+    private Button btnViewAppointments, btnOrderMedicine, btnChatbot, btnViewMedicalRecords;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,41 +27,28 @@ public class PatientDashboard extends AppCompatActivity {
         // Find the TextView for displaying the username
         usernameTextView = findViewById(R.id.profile_name);
 
-        // Get the current user
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        // Fetch and set the username from Firestore (use code provided earlier)
 
-        if (currentUser != null) {
-            // Get the user ID
-            String userId = currentUser.getUid();
+        // Find the buttons
+        btnViewAppointments = findViewById(R.id.btn_view_appointments);
+        btnOrderMedicine = findViewById(R.id.btn_order_medicine);
+        btnChatbot = findViewById(R.id.btn_chatbot);
+        btnViewMedicalRecords = findViewById(R.id.btn_view_medical_records);
 
-            // Fetch the user data from Firestore
-            fetchUsernameFromFirestore(userId);
-        } else {
-            // If no user is logged in, redirect to LoginActivity or handle it accordingly
-            Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show();
-        }
-    }
+        // Set onClick listeners for each button
+        btnViewAppointments.setOnClickListener(v -> {
+            Intent intent = new Intent(PatientDashboard.this, ViewAppointmentsActivity.class);
+            startActivity(intent);
+        });
 
-    private void fetchUsernameFromFirestore(String userId) {
-        // Retrieve the user document from Firestore
-        db.collection("users").document(userId).get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            // Get the username from Firestore document
-                            String username = document.getString("username");
+        btnOrderMedicine.setOnClickListener(v -> {
+            Intent intent = new Intent(PatientDashboard.this, OrderMedicineActivity.class);
+            startActivity(intent);
+        });
 
-                            // Set the username in the TextView
-                            if (username != null) {
-                                usernameTextView.setText("Welcome, " + username);
-                            }
-                        } else {
-                            Toast.makeText(PatientDashboard.this, "No such user found", Toast.LENGTH_SHORT).show();
-                        }
-                    } else {
-                        Toast.makeText(PatientDashboard.this, "Error fetching user data", Toast.LENGTH_SHORT).show();
-                    }
-                });
+        btnViewMedicalRecords.setOnClickListener(v -> {
+            Intent intent = new Intent(PatientDashboard.this, ViewMedicalRecordsActivity.class);
+            startActivity(intent);
+        });
     }
 }
