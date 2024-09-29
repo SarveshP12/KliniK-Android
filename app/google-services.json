@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "273487277370",
+    "project_id": "klinik-mad",
+    "storage_bucket": "klinik-mad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:273487277370:android:1e72dbddd5d38a8a827403",
+        "android_client_info": {
+          "package_name": "com.example.klinik_android"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNY3CF21_wBCg4F4mMSxyQJX0lmxuWUV8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
