@@ -1,5 +1,6 @@
 package com.example.klinik_android;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -15,6 +16,7 @@ public class PatientDashboard extends AppCompatActivity {
     private TextView usernameTextView;
     private Button btnViewAppointments, btnOrderMedicine, btnChatbot, btnViewMedicalRecords;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

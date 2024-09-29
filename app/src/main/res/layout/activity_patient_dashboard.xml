@@ -5,132 +5,136 @@
     android:padding="16dp">
 
     <!-- Profile Section -->
-<LinearLayout
-android:id="@+id/profile_section"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:orientation="horizontal"
-android:gravity="center_vertical"
-android:layout_marginBottom="24dp">
+    <LinearLayout
+        android:id="@+id/profile_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="24dp">
 
-<ImageView
-    android:id="@+id/profile_image"
-    android:layout_width="64dp"
-    android:layout_height="64dp"
-    android:src="@drawable/ic_profile"
-    android:scaleType="centerCrop"
-    android:layout_marginRight="16dp"
-    android:background="@drawable/circle_background" />
+        <ImageView
+            android:id="@+id/profile_image"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/ic_profile"
+            android:scaleType="centerCrop"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/circle_background" />
 
-<TextView
-    android:id="@+id/profile_name"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Patient Name"
-    android:textSize="18sp"
-    android:textColor="@android:color/black" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/profile_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Patient Name"
+            android:textSize="18sp"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
 
     <!-- Dashboard Grid with 4 Cards -->
-<GridLayout
-android:id="@+id/dashboard_grid"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:layout_below="@id/profile_section"
-android:columnCount="2"
-android:rowCount="2"
-android:layout_marginBottom="24dp">
-
-<!-- Card 1 -->
-<LinearLayout
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_columnWeight="1"
-    android:layout_rowWeight="1"
-    android:orientation="vertical"
-    android:background="@drawable/card_background"
-    android:gravity="center"
-    android:padding="16dp"
-    android:layout_margin="8dp">
-
-    <TextView
-        android:layout_width="wrap_content"
+    <GridLayout
+        android:id="@+id/dashboard_grid"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Appointments"
-        android:textSize="16sp"
-        android:textColor="@android:color/black" />
-</LinearLayout>
+        android:layout_below="@id/profile_section"
+        android:columnCount="2"
+        android:rowCount="2"
+        android:layout_marginBottom="24dp">
 
-<!-- Card 2 -->
-<LinearLayout
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_columnWeight="1"
-    android:layout_rowWeight="1"
-    android:orientation="vertical"
-    android:background="@drawable/card_background"
-    android:gravity="center"
-    android:padding="16dp"
-    android:layout_margin="8dp">
+        <!-- Card 1: Appointments -->
+        <LinearLayout
+            android:id="@+id/card_appointments"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:orientation="vertical"
+            android:background="@drawable/card_background"
+            android:gravity="center"
+            android:padding="16dp"
+            android:layout_margin="8dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Medical Records"
-        android:textSize="16sp"
-        android:textColor="@android:color/black" />
-</LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Appointments"
+                android:textSize="16sp"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
 
-<!-- Card 3 -->
-<LinearLayout
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_columnWeight="1"
-    android:layout_rowWeight="1"
-    android:orientation="vertical"
-    android:background="@drawable/card_background"
-    android:gravity="center"
-    android:padding="16dp"
-    android:layout_margin="8dp">
+        <!-- Card 2: Medical Records -->
+        <LinearLayout
+            android:id="@+id/card_medical_records"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:orientation="vertical"
+            android:background="@drawable/card_background"
+            android:gravity="center"
+            android:padding="16dp"
+            android:layout_margin="8dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Prescriptions"
-        android:textSize="16sp"
-        android:textColor="@android:color/black" />
-</LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Medical Records"
+                android:textSize="16sp"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
 
-<!-- Card 4 -->
-<LinearLayout
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_columnWeight="1"
-    android:layout_rowWeight="1"
-    android:orientation="vertical"
-    android:background="@drawable/card_background"
-    android:gravity="center"
-    android:padding="16dp"
-    android:layout_margin="8dp">
+        <!-- Card 3: Prescriptions -->
+        <LinearLayout
+            android:id="@+id/card_prescriptions"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:orientation="vertical"
+            android:background="@drawable/card_background"
+            android:gravity="center"
+            android:padding="16dp"
+            android:layout_margin="8dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lab Results"
-        android:textSize="16sp"
-        android:textColor="@android:color/black" />
-</LinearLayout>
-</GridLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Prescriptions"
+                android:textSize="16sp"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+
+        <!-- Card 4: Lab Results -->
+        <LinearLayout
+            android:id="@+id/card_lab_results"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:orientation="vertical"
+            android:background="@drawable/card_background"
+            android:gravity="center"
+            android:padding="16dp"
+            android:layout_margin="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lab Results"
+                android:textSize="16sp"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+    </GridLayout>
 
     <!-- Chatbot Button -->
-<ImageButton
-    android:id="@+id/chatbot_button"
-    android:layout_width="64dp"
-    android:layout_height="64dp"
-    android:src="@drawable/ic_chatbot"
-    android:background="?attr/selectableItemBackgroundBorderless"
-    android:layout_alignParentBottom="true"
-    android:layout_alignParentRight="true"
-    android:layout_margin="16dp" />
-
-    </RelativeLayout>
+    <ImageButton
+        android:id="@+id/chatbot_button"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/ic_chatbot"
+        android:contentDescription="Chat with Bot"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="16dp" />
+</RelativeLayout>
