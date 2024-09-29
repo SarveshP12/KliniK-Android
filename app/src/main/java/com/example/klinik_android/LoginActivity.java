@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(new Intent(LoginActivity.this, PatientDashboard.class));
                         finish(); // Close the LoginActivity so the user can't go back to it with the back button
                     } else {
-                        Toast.makeText(LoginActivity.this, "Login failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Login failed: ", Toast.LENGTH_LONG).show();
                     }
                 });
     }

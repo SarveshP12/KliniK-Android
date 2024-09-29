@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -25,14 +26,17 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        // Initialize views
         etEmail = findViewById(R.id.et_email);
         etPassword = findViewById(R.id.et_password);
         etUsername = findViewById(R.id.et_name);  // Added username input
         btnRegister = findViewById(R.id.btn_register);
 
+        // Initialize Firebase Auth and Firestore
         mAuth = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance();  // Initialize Firestore
+        db = FirebaseFirestore.getInstance();
 
+        // Register button click listener
         btnRegister.setOnClickListener(v -> registerUser());
     }
 
@@ -41,33 +45,45 @@ public class RegisterActivity extends AppCompatActivity {
         String password = etPassword.getText().toString();
         String username = etUsername.getText().toString();  // Capture the username
 
+        // Ensure all fields are filled
         if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "All fields are required!", Toast.LENGTH_SHORT).show();
             return;
         }
 
+        // Create a new user with email and password
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        // Get the newly created user ID
-                        String userId = mAuth.getCurrentUser().getUid();
+                        // Get the newly created user
+                        FirebaseUser firebaseUser = mAuth.getCurrentUser();
 
-                        // Store the username in Firestore along with other details
-                        Map<String, Object> user = new HashMap<>();
-                        user.put("username", username);
-                        user.put("email", email);
+                        if (firebaseUser != null) {
+                            String userId = firebaseUser.getUid();  // Get the user ID
 
-                        db.collection("users").document(userId)
-                                .set(user)
-                                .addOnSuccessListener(aVoid -> {
-                                    Toast.makeText(RegisterActivity.this, "Registration successful!", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                                    finish();  // Optionally finish the activity so the user can't go back
-                                })
-                                .addOnFailureListener(e -> {
-                                    Toast.makeText(RegisterActivity.this, "Error storing data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                                });
+                            // Prepare data to store in Firestore
+                            Map<String, Object> user = new HashMap<>();
+                            user.put("username", username);  // Store username
+                            user.put("email", email);        // Store email
+
+                            // Save user data to Firestore using the user ID as the document key
+                            db.collection("users").document(userId)
+                                    .set(user)
+                                    .addOnSuccessListener(aVoid -> {
+                                        // Show success message and navigate to LoginActivity
+                                        Toast.makeText(RegisterActivity.this, "Registration successful!", Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                        intent.putExtra("USERNAME", username);  // Optionally pass the username to the LoginActivity
+                                        startActivity(intent);
+                                        finish();  // Finish the RegisterActivity
+                                    })
+                                    .addOnFailureListener(e -> {
+                                        // Handle Firestore failure case
+                                        Toast.makeText(RegisterActivity.this, "Error storing data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    });
+                        }
                     } else {
+                        // Handle registration failure case
                         Toast.makeText(RegisterActivity.this, "Registration failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });

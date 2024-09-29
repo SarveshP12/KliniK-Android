@@ -14,6 +14,7 @@
         android:src="@drawable/klinik_logo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"/>
+
     <Button
         android:id="@+id/btn_open_new_activity"
         android:layout_width="wrap_content"
@@ -21,5 +22,18 @@
         android:text="Welcome"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="400dp"/>
+
+    <!-- SOS Button -->
+    <Button
+        android:id="@+id/btn_sos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:text="SOS"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"/>
 
 </RelativeLayout>
