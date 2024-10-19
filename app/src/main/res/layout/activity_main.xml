@@ -23,17 +23,33 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="400dp"/>
 
-    <!-- SOS Button -->
-    <Button
-        android:id="@+id/btn_sos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <!-- SOS Button reduced in size -->
+    <LinearLayout
+        android:id="@+id/btn_medical_records"
+        android:layout_width="80dp"
+        android:layout_height="90dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/card_background"
+        android:gravity="center"
+        android:orientation="vertical"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:text="SOS"
-        android:textColor="@android:color/white"
-        android:backgroundTint="@android:color/holo_red_dark"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="20dp"/>
+        android:layout_alignParentRight="true">
+
+        <ImageView
+            android:id="@+id/ordering_medicine_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="Ordering Medicines"
+            android:src="@drawable/ic_order_medicine" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="SOS"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+    </LinearLayout>
 
 </RelativeLayout>

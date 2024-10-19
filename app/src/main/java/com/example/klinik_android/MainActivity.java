@@ -7,7 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,14 +30,14 @@ public class MainActivity extends AppCompatActivity {
         btnOpenNewActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an Intent to start NewActivity
+                // Create an Intent to start SecondActivity
                 Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                 startActivity(intent); // Start the new activity
             }
         });
 
-        // SOS Button functionality
-        Button btnSos = findViewById(R.id.btn_sos);
+        // SOS Button functionality (LinearLayout instead of Button)
+        LinearLayout btnSos = findViewById(R.id.btn_medical_records);
         btnSos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     // Method to make the SOS call
     private void makeSOSCall() {
         // Replace this with the actual healthcare number
-        String phoneNumber = "tel:123456789";
+        String phoneNumber = "tel:9833883314";
         Intent callIntent = new Intent(Intent.ACTION_CALL);
         callIntent.setData(Uri.parse(phoneNumber));
 

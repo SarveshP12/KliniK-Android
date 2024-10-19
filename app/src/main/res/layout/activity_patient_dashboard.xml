@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/med_background"
-    android:padding="16dp">
+    tools:context=".PatientDashboard"
+    android:background="@drawable/med_background">
 
-    <!-- Profile Section with Image and Name -->
     <LinearLayout
         android:id="@+id/profile_section"
         android:layout_width="match_parent"
@@ -14,7 +14,8 @@
         android:padding="16dp"
         android:gravity="center_vertical"
         android:background="@drawable/circle_background"
-        android:layout_alignParentTop="true">
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="40dp">
 
         <ImageView
             android:id="@+id/profile_image"
@@ -36,114 +37,130 @@
             android:textSize="18sp" />
     </LinearLayout>
 
-    <!-- Grid Layout for 4 options -->
+
     <GridLayout
-        android:id="@+id/dashboard_grid"
+        android:id="@+id/grid_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/profile_section"
+        android:layout_marginTop="64dp"
+        android:alignmentMode="alignMargins"
         android:columnCount="2"
         android:rowCount="2"
-        android:layout_marginBottom="24dp">
+        android:padding="16dp"
+        tools:ignore="NotSibling"
+        android:layout_below="@id/profile_section">
 
-        <!-- Card 1: Appointments -->
+        <!-- Booking Appointment -->
         <LinearLayout
-            android:id="@+id/card_appointments"
-            android:layout_width="0dp"
+            android:id="@+id/btn_book_appointment"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
             android:orientation="vertical"
-            android:background="@drawable/card_background"
             android:gravity="center"
-            android:padding="16dp"
-            android:layout_margin="8dp">
-
+            android:layout_margin="25dp"
+            android:background="@drawable/card_background">
+            <ImageView
+                android:id="@+id/booking_appointment_icon"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/ic_booking_appointment"
+                android:contentDescription="Booking Appointment" />
             <TextView
-                android:id="@+id/btn_view_appointments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Appointments"
-                android:textSize="16sp"
-                android:textColor="@android:color/black" />
+                android:text="Booking Appointment"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:gravity="center"/>
         </LinearLayout>
 
-        <!-- Card 2: Medical Records -->
+        <!-- Medical Records -->
         <LinearLayout
-            android:id="@+id/card_medical_records"
-            android:layout_width="0dp"
+            android:id="@+id/btn_order_medicine"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
             android:orientation="vertical"
-            android:background="@drawable/card_background"
             android:gravity="center"
-            android:padding="16dp"
-            android:layout_margin="8dp">
-
+            android:layout_margin="25dp"
+            android:background="@drawable/card_background">
+            <ImageView
+                android:id="@+id/medical_records_icon"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/ic_medical_records"
+                android:contentDescription="Medical Records" />
             <TextView
-                android:id="@+id/btn_view_medical_records"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Medical Records"
-                android:textSize="16sp"
-                android:textColor="@android:color/black" />
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:gravity="center"/>
         </LinearLayout>
 
-        <!-- Card 3: Prescriptions -->
+        <!-- Ordering Medicines -->
         <LinearLayout
-            android:id="@+id/card_prescriptions"
-            android:layout_width="1dp"
+            android:id="@+id/btn_medical_records"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
             android:orientation="vertical"
-            android:background="@drawable/card_background"
             android:gravity="center"
-            android:padding="16dp"
-            android:layout_margin="8dp">
-
+            android:layout_margin="25dp"
+            android:background="@drawable/card_background">
+            <ImageView
+                android:id="@+id/ordering_medicine_icon"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/ic_order_medicine"
+                android:contentDescription="Ordering Medicines" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Prescriptions"
-                android:textSize="16sp"
-                android:textColor="@android:color/black" />
+                android:text="Ordering Medicines"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:gravity="center"/>
         </LinearLayout>
 
-        <!-- Card 4: Lab Results -->
+        <!-- Telemedicine -->
         <LinearLayout
-            android:id="@+id/card_lab_results"
-            android:layout_width="0dp"
+            android:id="@+id/btn_telemedicine"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
             android:orientation="vertical"
-            android:background="@drawable/card_background"
             android:gravity="center"
-            android:padding="16dp"
-            android:layout_margin="8dp">
-
+            android:layout_margin="25dp"
+            android:background="@drawable/card_background">
+            <ImageView
+                android:id="@+id/telemedicine_icon"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/ic_telemedicine"
+                android:contentDescription="Telemedicine" />
             <TextView
-                android:id="@+id/btn_order_medicine"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lab Results"
-                android:textSize="16sp"
-                android:textColor="@android:color/black" />
+                android:text="Telemedicine"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:gravity="center"/>
+
         </LinearLayout>
+
     </GridLayout>
-    <!-- Chatbot Button -->
-    <Button
-        android:id="@+id/chatbot_button"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="Chatbot"
-        android:textColor="@android:color/white"
-        android:backgroundTint="@color/colorAccent"
+
+    <!-- Chatbot FloatingActionButton -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_chatbot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_chatbot"
+        android:contentDescription="Chatbot"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_margin="16dp"
-        android:background="@drawable/rounded_button_background" />
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        app:backgroundTint="@color/colorAccent"
+        app:elevation="8dp" />
 
 </RelativeLayout>

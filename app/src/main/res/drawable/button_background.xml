@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Default state (normal) -->
+    <item android:state_enabled="true">
+        <shape android:shape="rectangle">
+            <!-- Gradient color -->
+            <gradient
+                android:startColor="#4CAF50"
+                android:endColor="#087f23"
+                android:angle="90"/>
+
+            <!-- Corner radius -->
+            <corners android:radius="16dp" />
+
+            <!-- Padding inside the button -->
+            <padding
+                android:left="10dp"
+                android:top="10dp"
+                android:right="10dp"
+                android:bottom="10dp" />
+
+            <!-- Stroke (border) -->
+            <stroke
+                android:width="2dp"
+                android:color="#087f23" />
+        </shape>
+    </item>
+
+    <!-- Disabled state -->
+    <item android:state_enabled="false">
+        <shape android:shape="rectangle">
+            <solid android:color="#BDBDBD" /> <!-- Grey color when disabled -->
+            <corners android:radius="16dp" />
+            <stroke
+                android:width="2dp"
+                android:color="#9E9E9E" />
+        </shape>
+    </item>
+</selector>

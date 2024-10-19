@@ -37,7 +37,6 @@ public class PatientDashboard extends AppCompatActivity {
     private FirebaseStorage storage;
     private ImageView profileImageView;
     private TextView usernameTextView;
-    private TextView btnViewAppointments, btnOrderMedicine, btnViewMedicalRecords;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -60,26 +59,8 @@ public class PatientDashboard extends AppCompatActivity {
         // Set up click listener for profile image to pick an image from gallery
         profileImageView.setOnClickListener(v -> checkAndRequestPermissions());
 
-        // Find buttons
-        btnViewAppointments = findViewById(R.id.btn_view_appointments);
-        btnOrderMedicine = findViewById(R.id.btn_order_medicine);
-        btnViewMedicalRecords = findViewById(R.id.btn_view_medical_records);
-
-        // Set onClick listeners for buttons
-        btnViewAppointments.setOnClickListener(v -> {
-            Intent intent = new Intent(PatientDashboard.this, ViewAppointmentsActivity.class);
-            startActivity(intent);
-        });
-
-        btnOrderMedicine.setOnClickListener(v -> {
-            Intent intent = new Intent(PatientDashboard.this, OrderMedicineActivity.class);
-            startActivity(intent);
-        });
-
-        btnViewMedicalRecords.setOnClickListener(v -> {
-            Intent intent = new Intent(PatientDashboard.this, ViewMedicalRecordsActivity.class);
-            startActivity(intent);
-        });
+        // Set up button clicks for different actions
+        setupButtons();
     }
 
     // Method to fetch the username from Firestore and display it in the TextView
@@ -113,6 +94,28 @@ public class PatientDashboard extends AppCompatActivity {
         });
     }
 
+    // Set up click listeners for the buttons
+    private void setupButtons() {
+        findViewById(R.id.btn_book_appointment).setOnClickListener(v -> {
+            Intent intent = new Intent(PatientDashboard.this, AppointmentActivity.class);
+            startActivity(intent);
+        });
+
+        findViewById(R.id.btn_order_medicine).setOnClickListener(v -> {
+            Intent intent = new Intent(PatientDashboard.this, OrderMedicineActivity.class);
+            startActivity(intent);
+        });
+
+        findViewById(R.id.btn_medical_records).setOnClickListener(v -> {
+            Intent intent = new Intent(PatientDashboard.this, ViewMedicalRecordsActivity.class);
+            startActivity(intent);
+        });
+
+        findViewById(R.id.btn_telemedicine).setOnClickListener(v -> {
+            Intent intent = new Intent(PatientDashboard.this, TelemedicineActivity.class);
+            startActivity(intent);
+        });
+    }
 
     // Method to check and request permissions if needed
     private void checkAndRequestPermissions() {

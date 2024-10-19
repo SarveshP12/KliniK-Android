@@ -45,6 +45,7 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation ("com.google.firebase:firebase-storage:20.1.1")
     implementation ("com.github.bumptech.glide:glide:4.12.0")
+    implementation(libs.firebase.database)
     annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
     implementation(libs.firebase.firestore)
 
