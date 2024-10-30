@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/med_background"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Doctor Details"
+                android:textSize="18sp"
+                android:textColor="#3A3D75"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Doctor Profile Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:background="@drawable/circle_background">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/circle_background"
+                android:padding="8dp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingStart="16dp">
+
+                <TextView
+                    android:id="@+id/doctorPhysId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Physician ID" />
+
+                <TextView
+                    android:id="@+id/doctorName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Doctor Name" />
+
+                <TextView
+                    android:id="@+id/doctorSpecialty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Specialty" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- About Doctor Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="About Dr. Stefannie"
+            android:textSize="16sp"
+            android:textColor="#3A3D75"
+            android:textStyle="bold"
+            android:paddingTop="16dp" />
+
+        <TextView
+            android:id="@+id/doctorAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address" />
+
+        <TextView
+            android:id="@+id/doctorPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone" />
+
+        <!-- Appointment Schedule Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Appointment Schedule"
+            android:textSize="16sp"
+            android:textColor="#3A3D75"
+            android:textStyle="bold"
+            android:paddingTop="16dp" />
+
+        <!-- Dates Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:paddingTop="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fri 12"
+                android:background="@drawable/rounded_background_gray"
+                android:padding="8dp"
+                android:textColor="#6D6F99" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sat 13"
+                android:background="@drawable/rounded_background_gray"
+                android:padding="8dp"
+                android:textColor="#6D6F99"
+                android:layout_marginStart="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sun 14"
+                android:background="@drawable/rounded_background_blue"
+                android:padding="8dp"
+                android:textColor="#FFFFFF"
+                android:layout_marginStart="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mon 15"
+                android:background="@drawable/rounded_background_gray"
+                android:padding="8dp"
+                android:textColor="#6D6F99"
+                android:layout_marginStart="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tue 16"
+                android:background="@drawable/rounded_background_gray"
+                android:padding="8dp"
+                android:textColor="#6D6F99"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <!-- Time Slots -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:paddingTop="8dp">
+
+            <TextView
+                android:id="@+id/timeSlot1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10:00 AM"
+                android:background="@drawable/rounded_background_blue"
+                android:padding="8dp"
+                android:textColor="#FFFFFF"
+                android:layout_margin="4dp" />
+
+            <TextView
+                android:id="@+id/timeSlot2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12:30 PM"
+                android:background="@drawable/rounded_background_blue"
+                android:padding="8dp"
+                android:textColor="#FFFFFF"
+                android:layout_margin="4dp" />
+
+            <TextView
+                android:id="@+id/timeSlot3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3:45 PM"
+                android:background="@drawable/rounded_background_blue"
+                android:padding="8dp"
+                android:textColor="#FFFFFF"
+                android:layout_margin="4dp" />
+        </LinearLayout>
+
+        <!-- Book Appointment Button -->
+        <Button
+            android:id="@+id/bookAppointmentButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Book Appointment"
+            android:backgroundTint="#3A3D75"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="24dp"
+            android:textAllCaps="false" />
+    </LinearLayout>
+</ScrollView>

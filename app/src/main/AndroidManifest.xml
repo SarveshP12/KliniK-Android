@@ -18,7 +18,22 @@
         android:theme="@style/Theme.KliniKAndroid"
         tools:targetApi="31">
         <activity
+            android:name=".DoctorDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".BookAppointment"
+            android:exported="false" />
+        <activity
+            android:name=".FindDoctor"
+            android:exported="false" />
+        <activity
             android:name=".AppointmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PrevAppointmentActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.mobile_app.LoginActivity$AppointmentActivity"
             android:exported="false" />
         <activity
             android:name=".TelemedicineActivity"

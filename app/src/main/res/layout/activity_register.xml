@@ -15,7 +15,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"/>
 
-    <!-- Email Field -->
+    <!-- Name Field -->
     <EditText
         android:id="@+id/et_name"
         android:layout_width="match_parent"
@@ -27,6 +27,7 @@
         android:padding="10dp"
         android:layout_below="@id/logo"/>
 
+    <!-- Email Field -->
     <EditText
         android:id="@+id/et_email"
         android:layout_width="match_parent"
@@ -62,6 +63,30 @@
         android:background="@drawable/edit_text_background"
         android:layout_below="@id/et_password"/>
 
+    <!-- User Type Radio Group -->
+    <RadioGroup
+        android:id="@+id/user_type_radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_phone"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radio_doctor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Doctor"
+            android:padding="8dp"/>
+
+        <RadioButton
+            android:id="@+id/radio_patient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Patient"
+            android:padding="8dp"/>
+    </RadioGroup>
+
     <!-- Register Button -->
     <Button
         android:id="@+id/btn_register"
@@ -72,6 +97,6 @@
         android:backgroundTint="@color/black"
         android:padding="12dp"
         android:layout_marginTop="10dp"
-        android:layout_below="@id/et_phone"/>
+        android:layout_below="@id/user_type_radio_group"/>
 
 </RelativeLayout>

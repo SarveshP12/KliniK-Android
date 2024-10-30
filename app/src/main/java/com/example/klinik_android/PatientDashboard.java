@@ -97,7 +97,7 @@ public class PatientDashboard extends AppCompatActivity {
     // Set up click listeners for the buttons
     private void setupButtons() {
         findViewById(R.id.btn_book_appointment).setOnClickListener(v -> {
-            Intent intent = new Intent(PatientDashboard.this, AppointmentActivity.class);
+            Intent intent = new Intent(PatientDashboard.this, FindDoctor.class);
             startActivity(intent);
         });
 

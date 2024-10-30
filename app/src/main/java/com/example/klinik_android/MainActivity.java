@@ -37,52 +37,52 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // SOS Button functionality (LinearLayout instead of Button)
-        LinearLayout btnSos = findViewById(R.id.btn_medical_records);
-        btnSos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Check if permission is granted
-                if (ContextCompat.checkSelfPermission(MainActivity.this,
-                        Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-
-                    // Request permission
-                    ActivityCompat.requestPermissions(MainActivity.this,
-                            new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL_PERMISSION);
-                } else {
-                    // Permission granted, make the call
-                    makeSOSCall();
-                }
-            }
-        });
-    }
-
-    // Method to make the SOS call
-    private void makeSOSCall() {
-        // Replace this with the actual healthcare number
-        String phoneNumber = "tel:9833883314";
-        Intent callIntent = new Intent(Intent.ACTION_CALL);
-        callIntent.setData(Uri.parse(phoneNumber));
-
-        try {
-            startActivity(callIntent);
-        } catch (SecurityException e) {
-            Toast.makeText(this, "Permission to make calls not granted", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    // Handle permission result
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (requestCode == REQUEST_CALL_PERMISSION) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Permission granted
-                makeSOSCall();
-            } else {
-                // Permission denied
-                Toast.makeText(this, "Call permission denied", Toast.LENGTH_SHORT).show();
-            }
-        }
+//        LinearLayout btnSos = findViewById(R.id.btn_medical_records);
+//        btnSos.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Check if permission is granted
+//                if (ContextCompat.checkSelfPermission(MainActivity.this,
+//                        Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+//
+//                    // Request permission
+//                    ActivityCompat.requestPermissions(MainActivity.this,
+//                            new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL_PERMISSION);
+//                } else {
+//                    // Permission granted, make the call
+//                    makeSOSCall();
+//                }
+//            }
+//        });
+//    }
+//
+//    // Method to make the SOS call
+//    private void makeSOSCall() {
+//        // Replace this with the actual healthcare number
+//        String phoneNumber = "tel:9833883314";
+//        Intent callIntent = new Intent(Intent.ACTION_CALL);
+//        callIntent.setData(Uri.parse(phoneNumber));
+//
+//        try {
+//            startActivity(callIntent);
+//        } catch (SecurityException e) {
+//            Toast.makeText(this, "Permission to make calls not granted", Toast.LENGTH_SHORT).show();
+//        }
+//    }
+//
+//    // Handle permission result
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//
+//        if (requestCode == REQUEST_CALL_PERMISSION) {
+//            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                // Permission granted
+//                makeSOSCall();
+//            } else {
+//                // Permission denied
+//                Toast.makeText(this, "Call permission denied", Toast.LENGTH_SHORT).show();
+//            }
+//        }
     }
 }

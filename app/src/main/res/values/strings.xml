@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">KliniK-Android</string>
+    <string-array name="doctor_array">
+        <item>Dr. Smith</item>
+        <item>Dr. Johnson</item>
+        <item>Dr. Williams</item>
+    </string-array>
 </resources>
