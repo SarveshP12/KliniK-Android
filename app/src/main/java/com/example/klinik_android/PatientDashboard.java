@@ -66,7 +66,7 @@ public class PatientDashboard extends AppCompatActivity {
     // Method to fetch the username from Firestore and display it in the TextView
     private void fetchAndDisplayUsername() {
         String userId = mAuth.getCurrentUser().getUid();
-        DocumentReference userRef = db.collection("users").document(userId);
+        DocumentReference userRef = db.collection("patients").document(userId);
 
         userRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {

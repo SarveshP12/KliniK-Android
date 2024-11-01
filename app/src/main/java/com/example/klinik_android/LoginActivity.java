@@ -61,29 +61,25 @@ public class LoginActivity extends AppCompatActivity {
                         if (firebaseUser != null) {
                             String userId = firebaseUser.getUid();
 
-                            // Fetch user type from Firestore
-                            db.collection("users").document(userId).get()
+                            // First, check if the user is a doctor
+                            db.collection("doctors").document(userId).get()
                                     .addOnCompleteListener(task1 -> {
-                                        if (task1.isSuccessful()) {
-                                            DocumentSnapshot document = task1.getResult();
-                                            if (document.exists()) {
-                                                String userType = document.getString("userType");
-
-                                                // Navigate to the appropriate dashboard based on user type
-                                                Intent intent;
-                                                if ("Doctor".equals(userType)) {
-                                                    intent = new Intent(LoginActivity.this, DoctorDashboard.class);
-                                                } else {
-                                                    intent = new Intent(LoginActivity.this, PatientDashboard.class);
-                                                }
-                                                startActivity(intent);
-                                                finish(); // Close the LoginActivity so the user can't go back to it
-
-                                            } else {
-                                                Toast.makeText(LoginActivity.this, "User type not found.", Toast.LENGTH_SHORT).show();
-                                            }
+                                        if (task1.isSuccessful() && task1.getResult().exists()) {
+                                            // User is a doctor
+                                            Toast.makeText(LoginActivity.this, "Doctor user found", Toast.LENGTH_SHORT).show();
+                                            navigateToDashboard("Doctor");
                                         } else {
-                                            Toast.makeText(LoginActivity.this, "Error fetching user data.", Toast.LENGTH_SHORT).show();
+                                            // If not a doctor, check if the user is a patient
+                                            db.collection("patients").document(userId).get()
+                                                    .addOnCompleteListener(task2 -> {
+                                                        if (task2.isSuccessful() && task2.getResult().exists()) {
+                                                            // User is a patient
+                                                            navigateToDashboard("Patient");
+                                                        } else {
+                                                            // If user data is not found in both collections
+                                                            Toast.makeText(LoginActivity.this, "User type not found.", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    });
                                         }
                                     });
                         }
@@ -103,5 +99,17 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, errorMessage, Toast.LENGTH_LONG).show();
                     }
                 });
+    }
+
+    private void navigateToDashboard(String userType) {
+        Intent intent;
+        if ("Doctor".equals(userType)) {
+            Toast.makeText(this, "taking to doctors dashboard", Toast.LENGTH_SHORT).show();
+            intent = new Intent(LoginActivity.this, DoctorDashboard.class);
+        } else {
+            intent = new Intent(LoginActivity.this, PatientDashboard.class);
+        }
+        startActivity(intent);
+        finish(); // Close the LoginActivity so the user can't go back to it
     }
 }

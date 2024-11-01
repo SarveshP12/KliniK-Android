@@ -34,9 +34,9 @@ public class RegisterActivity extends AppCompatActivity {
         // Initialize views
         etEmail = findViewById(R.id.et_email);
         etPassword = findViewById(R.id.et_password);
-        etUsername = findViewById(R.id.et_name);  // Added username input
+        etUsername = findViewById(R.id.et_name);
         btnRegister = findViewById(R.id.btn_register);
-        userTypeRadioGroup = findViewById(R.id.user_type_radio_group); // Initialize RadioGroup
+        userTypeRadioGroup = findViewById(R.id.user_type_radio_group);
 
         // Initialize Firebase Auth and Firestore
         mAuth = FirebaseAuth.getInstance();
@@ -49,7 +49,7 @@ public class RegisterActivity extends AppCompatActivity {
     private void registerUser() {
         String email = etEmail.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
-        String username = etUsername.getText().toString().trim();  // Capture the username
+        String username = etUsername.getText().toString().trim();
 
         // Ensure all fields are filled
         if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
@@ -85,27 +85,24 @@ public class RegisterActivity extends AppCompatActivity {
 
                             // Prepare data to store in Firestore
                             Map<String, Object> user = new HashMap<>();
-                            user.put("username", username);  // Store username
-                            user.put("email", email);        // Store email
-                            user.put("userType", userType);   // Store user type
+                            user.put("username", username);
+                            user.put("email", email);
+                            user.put("userType", userType);
 
-                            // Save user data to Firestore using the user ID as the document key
-                            db.collection("users").document(userId)
+                            // Determine collection based on user type
+                            String collection = userType.equals("Doctor") ? "doctors" : "patients";
+
+                            // Save user data to the respective Firestore collection
+                            db.collection(collection).document(userId)
                                     .set(user)
                                     .addOnSuccessListener(aVoid -> {
                                         // Show success message
-                                        Toast.makeText(RegisterActivity.this, "Registration successful!", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(RegisterActivity.this, "Registration successful! Please log in.", Toast.LENGTH_SHORT).show();
 
-                                        // Navigate to the appropriate dashboard based on user type
-                                        Intent intent;
-                                        if (userType.equals("Doctor")) {
-                                            intent = new Intent(RegisterActivity.this, DoctorDashboard.class);
-                                        } else {
-                                            intent = new Intent(RegisterActivity.this, PatientDashboard.class);
-                                        }
-                                        intent.putExtra("USERNAME", username);  // Optionally pass the username
+                                        // Redirect to LoginActivity
+                                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                         startActivity(intent);
-                                        finish();  // Finish the RegisterActivity
+                                        finish();  // Close the RegisterActivity
                                     })
                                     .addOnFailureListener(e -> {
                                         // Handle Firestore failure case

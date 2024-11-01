@@ -1,0 +1,46 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/et_specialization"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Specialization" />
+
+    <EditText
+        android:id="@+id/et_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Address" />
+
+    <EditText
+        android:id="@+id/et_phone_no"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:hint="Phone Number" />
+
+    <EditText
+        android:id="@+id/et_textarea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Brief Description (optional)"
+        android:inputType="textMultiLine"
+        android:minLines="3" />
+
+    <EditText
+        android:id="@+id/et_phys_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Physician ID" />
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save" />
+
+</LinearLayout>
