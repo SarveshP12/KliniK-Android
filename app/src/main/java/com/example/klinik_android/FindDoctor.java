@@ -10,11 +10,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +23,8 @@ public class FindDoctor extends AppCompatActivity {
     private RecyclerView doctorRecyclerView;
     private DoctorAdapter doctorAdapter;
     private List<Doctor> doctorList;
-    private DatabaseReference databaseReference;
+    private FirebaseFirestore firestore;
+    private CollectionReference doctorsRef;
 
     private Button dentalSpecialistButton;
     private Button heartSpecialistButton;
@@ -39,19 +39,20 @@ public class FindDoctor extends AppCompatActivity {
         doctorRecyclerView = findViewById(R.id.doctorRecyclerView);
         doctorRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         doctorList = new ArrayList<>();
-        doctorAdapter = new DoctorAdapter(this,doctorList); // Pass context and doctor list
+        doctorAdapter = new DoctorAdapter(this, doctorList); // Pass context and doctor list
         doctorRecyclerView.setAdapter(doctorAdapter);
 
-        // Initialize Firebase Database reference
-        databaseReference = FirebaseDatabase.getInstance().getReference("doctors");
+        // Initialize Firestore reference
+        firestore = FirebaseFirestore.getInstance();
+        doctorsRef = firestore.collection("doctors");
 
         // Initialize filter buttons
         dentalSpecialistButton = findViewById(R.id.dental_specialist_button);
         heartSpecialistButton = findViewById(R.id.heart_specialist_button);
         childSpecialistButton = findViewById(R.id.medicine_button);
 
-        // Load all doctors from Firebase
-        fetchDoctorsFromFirebase();
+        // Load all doctors from Firestore
+        fetchDoctorsFromFirestore();
 
         // Set up filter button click listeners
         dentalSpecialistButton.setOnClickListener(v -> filterDoctors("Dental Specialist"));
@@ -59,41 +60,40 @@ public class FindDoctor extends AppCompatActivity {
         childSpecialistButton.setOnClickListener(v -> filterDoctors("Child Specialist"));
     }
 
-    private void fetchDoctorsFromFirebase() {
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+    private void fetchDoctorsFromFirestore() {
+        doctorsRef.addSnapshotListener((querySnapshot, error) -> {
+            if (error != null) {
+                Toast.makeText(FindDoctor.this, "Failed to load data", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (querySnapshot != null) {
                 doctorList.clear();
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Doctor doctor = dataSnapshot.getValue(Doctor.class);
+                for (DocumentSnapshot document : querySnapshot.getDocuments()) {
+                    Doctor doctor = document.toObject(Doctor.class);
                     if (doctor != null) {
-                        doctorList.add(doctor); // physID will be included automatically if present in Firebase
+                        doctorList.add(doctor);
                     }
                 }
                 doctorAdapter.notifyDataSetChanged();
             }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(FindDoctor.this, "Failed to load data", Toast.LENGTH_SHORT).show();
-            }
         });
     }
 
-    private void filterDoctors(String specialty) {
+    private void filterDoctors(String specialization) {
         List<Doctor> filteredList = new ArrayList<>();
         for (Doctor doctor : doctorList) {
-            if (doctor.getSpecialty().equals(specialty)) {
+            if (doctor.getSpecialization().equals(specialization)) {
                 filteredList.add(doctor);
             }
         }
 
-        // Create new adapter with filtered data and set it to RecyclerView
-        doctorAdapter = new DoctorAdapter(this, filteredList); // Pass the filtered list
+        // Update RecyclerView with filtered data
+        doctorAdapter = new DoctorAdapter(this, filteredList);
         doctorRecyclerView.setAdapter(doctorAdapter);
 
         if (filteredList.isEmpty()) {
-            Toast.makeText(this, "No doctors found for " + specialty, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No doctors found for " + specialization, Toast.LENGTH_SHORT).show();
         }
     }
 }

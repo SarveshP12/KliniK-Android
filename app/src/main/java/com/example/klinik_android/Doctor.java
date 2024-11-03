@@ -1,63 +1,52 @@
 package com.example.klinik_android;
 
 public class Doctor {
-    private int physID;
-    private String name;
+    private String username;
+    private String specialization;  // Changed from "specialty" to "specialization"
     private String address;
-    private String phone;
-    private String specialty;
+    private String phoneNumber;
 
-    // Default constructor required for calls to DataSnapshot.getValue(Doctor.class)
-    public Doctor() {
-    }
+    // Required empty constructor for Firestore
+    public Doctor() {}
 
-    // Parameterized constructor for easier initialization if needed
-    public Doctor(int physID, String name, String address, String phone, String specialty) {
-        this.physID = physID;
-        this.name = name;
+    public Doctor(String username, String specialization, String address, String phoneNumber) {
+        this.username = username;
+        this.specialization = specialization;
         this.address = address;
-        this.phone = phone;
-        this.specialty = specialty;
+        this.phoneNumber = phoneNumber;
     }
 
-    // Getters and setters for each field
-    public int getPhysID() {
-        return physID;
+    // Getters
+    public String getUsername() {
+        return username;
     }
 
-    public void setPhysID(int physID) {
-        this.physID = physID;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public String getSpecialization() {
+        return specialization;
     }
 
     public String getAddress() {
         return address;
     }
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    // Setters
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setSpecialization(String specialization) {
+        this.specialization = specialization;
+    }
+
     public void setAddress(String address) {
         this.address = address;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getSpecialty() {
-        return specialty;
-    }
-
-    public void setSpecialty(String specialty) {
-        this.specialty = specialty;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

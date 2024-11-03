@@ -1,4 +1,4 @@
-<!-- item_doctor.xml -->
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -7,38 +7,38 @@
     android:background="@drawable/doctor_item_background">
 
     <TextView
-        android:id="@+id/doctorNameTextView"
+        android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Doctor Name"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
 
     <TextView
-        android:id="@+id/doctorSpecialtyTextView"
+        android:id="@+id/tv_specialization"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Specialty"
-        android:textSize="16sp" />
+        android:text="Specialization"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:paddingTop="4dp"/>
 
     <TextView
-        android:id="@+id/doctorAddressTextView"
+        android:id="@+id/tv_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Address"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:paddingTop="4dp"/>
 
     <TextView
-        android:id="@+id/doctorPhoneTextView"
+        android:id="@+id/tv_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Phone Number"
-        android:textSize="14sp" />
-
-    <TextView
-        android:id="@+id/doctorPhysIdTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Physician ID"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:paddingTop="4dp"/>
 </LinearLayout>

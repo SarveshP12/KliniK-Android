@@ -24,20 +24,17 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorView
     @NonNull
     @Override
     public DoctorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // Inflate the layout for each item in the RecyclerView
         View view = LayoutInflater.from(context).inflate(R.layout.doctor_item, parent, false);
         return new DoctorViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull DoctorViewHolder holder, int position) {
-        // Bind each doctor data to the respective view holder
         Doctor doctor = doctorList.get(position);
-        holder.doctorName.setText(doctor.getName());
-        holder.doctorSpecialty.setText(doctor.getSpecialty());
-        holder.doctorAddress.setText(doctor.getAddress());
-        holder.doctorPhone.setText(doctor.getPhone());
-        holder.doctorPhysId.setText(String.valueOf(doctor.getPhysID()));
+        holder.nameTextView.setText(doctor.getUsername());
+        holder.specializationTextView.setText(doctor.getSpecialization());  // Changed from "specialty" to "specialization"
+        holder.addressTextView.setText(doctor.getAddress());
+        holder.phoneTextView.setText(doctor.getPhoneNumber());
     }
 
     @Override
@@ -45,22 +42,18 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorView
         return doctorList.size();
     }
 
-    // ViewHolder class to hold reference to each item in the RecyclerView
-    public static class DoctorViewHolder extends RecyclerView.ViewHolder {
-
-        TextView doctorName;
-        TextView doctorSpecialty;
-        TextView doctorAddress;
-        TextView doctorPhone;
-        TextView doctorPhysId;
+    public class DoctorViewHolder extends RecyclerView.ViewHolder {
+        TextView nameTextView;
+        TextView specializationTextView;
+        TextView addressTextView;
+        TextView phoneTextView;
 
         public DoctorViewHolder(@NonNull View itemView) {
             super(itemView);
-            doctorName = itemView.findViewById(R.id.doctorNameTextView);
-            doctorSpecialty = itemView.findViewById(R.id.doctorSpecialtyTextView);
-            doctorAddress = itemView.findViewById(R.id.doctorAddressTextView);
-            doctorPhone = itemView.findViewById(R.id.doctorPhoneTextView);
-            doctorPhysId = itemView.findViewById(R.id.doctorPhysIdTextView);
+            nameTextView = itemView.findViewById(R.id.tv_name); // Check this ID
+            specializationTextView = itemView.findViewById(R.id.tv_specialization);
+            addressTextView = itemView.findViewById(R.id.tv_address);
+            phoneTextView = itemView.findViewById(R.id.tv_phone);
         }
     }
 }
