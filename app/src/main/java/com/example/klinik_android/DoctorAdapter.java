@@ -1,6 +1,7 @@
 package com.example.klinik_android;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,19 +13,25 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorViewHolder> {
-
-    private Context context;
     private List<Doctor> doctorList;
+    private Context context;
 
-    public DoctorAdapter(Context context, List<Doctor> doctorList) {
-        this.context = context;
+    public DoctorAdapter(List<Doctor> doctorList, Context context) {
         this.doctorList = doctorList;
+        this.context = context;
+    }
+
+    // Method to update the list and refresh the RecyclerView
+    public void updateList(List<Doctor> newDoctorList) {
+        doctorList.clear();
+        doctorList.addAll(newDoctorList);
+        notifyDataSetChanged();
     }
 
     @NonNull
     @Override
     public DoctorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.doctor_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_doctor, parent, false);
         return new DoctorViewHolder(view);
     }
 
@@ -32,9 +39,14 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorView
     public void onBindViewHolder(@NonNull DoctorViewHolder holder, int position) {
         Doctor doctor = doctorList.get(position);
         holder.nameTextView.setText(doctor.getUsername());
-        holder.specializationTextView.setText(doctor.getSpecialization());  // Changed from "specialty" to "specialization"
-        holder.addressTextView.setText(doctor.getAddress());
-        holder.phoneTextView.setText(doctor.getPhoneNumber());
+        holder.specialtyTextView.setText(doctor.getSpecialization());
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, BookingAppointment.class);
+            intent.putExtra("doctorName", doctor.getUsername());
+            intent.putExtra("doctorSpecialty", doctor.getSpecialization());
+            context.startActivity(intent);
+        });
     }
 
     @Override
@@ -42,18 +54,13 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorView
         return doctorList.size();
     }
 
-    public class DoctorViewHolder extends RecyclerView.ViewHolder {
-        TextView nameTextView;
-        TextView specializationTextView;
-        TextView addressTextView;
-        TextView phoneTextView;
+    public static class DoctorViewHolder extends RecyclerView.ViewHolder {
+        TextView nameTextView, specialtyTextView;
 
-        public DoctorViewHolder(@NonNull View itemView) {
+        public DoctorViewHolder(View itemView) {
             super(itemView);
-            nameTextView = itemView.findViewById(R.id.tv_name); // Check this ID
-            specializationTextView = itemView.findViewById(R.id.tv_specialization);
-            addressTextView = itemView.findViewById(R.id.tv_address);
-            phoneTextView = itemView.findViewById(R.id.tv_phone);
+            nameTextView = itemView.findViewById(R.id.nameTextView);
+            specialtyTextView = itemView.findViewById(R.id.specialtyTextView);
         }
     }
 }
