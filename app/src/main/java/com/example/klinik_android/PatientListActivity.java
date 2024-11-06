@@ -58,11 +58,11 @@ public class PatientListActivity extends AppCompatActivity {
     }
 
     private void loadPatientList() {
-        firestore.collection("Patients").get()
+        firestore.collection("patients").get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         for (QueryDocumentSnapshot document : task.getResult()) {
-                            String name = document.getString("name");
+                            String name = document.getString("username");
                             String patientId = document.getId();  // Assuming document ID is patientId
 
                             if (name != null && patientId != null) {

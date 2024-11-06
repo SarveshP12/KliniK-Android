@@ -82,9 +82,9 @@ public class ViewMedicalRecordsActivity extends AppCompatActivity {
     private void loadMedicalRecords(String patientId) {
         loadingSpinner.setVisibility(View.VISIBLE);
 
-        CollectionReference recordsRef = firestore.collection("Patients")
+        CollectionReference recordsRef = firestore.collection("patients")
                 .document(patientId)
-                .collection("MedicalRecords");
+                .collection("medicalrecords");
 
         recordsRef.get().addOnCompleteListener(task -> {
             loadingSpinner.setVisibility(View.GONE);
@@ -149,8 +149,8 @@ public class ViewMedicalRecordsActivity extends AppCompatActivity {
         record.put("pdfUrl", pdfUrl);
         record.put("date", System.currentTimeMillis());
 
-        firestore.collection("Patients").document(patientId)
-                .collection("MedicalRecords").add(record)
+        firestore.collection("patients").document(patientId)
+                .collection("medicalrecords").add(record)
                 .addOnSuccessListener(documentReference -> {
                     loadingSpinner.setVisibility(View.GONE);
                     loadMedicalRecords(patientId); // Reload records
