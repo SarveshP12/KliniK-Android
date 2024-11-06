@@ -142,8 +142,7 @@
         android:id="@+id/timePicker"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:timePickerMode="spinner"
-        android:layout_marginLeft=""/>
+        android:timePickerMode="spinner"/>
 
 
     <!-- Book Appointment Button -->
