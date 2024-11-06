@@ -2,18 +2,22 @@ package com.example.klinik_android;
 
 public class Doctor {
     private String username;
-    private String specialization;  // Changed from "specialty" to "specialization"
+    private String specialization;
     private String address;
-    private String phoneNumber;
+    private String phoneNo;
+    private String physID;
+    private String description;
 
     // Required empty constructor for Firestore
     public Doctor() {}
 
-    public Doctor(String username, String specialization, String address, String phoneNumber) {
+    public Doctor(String username, String specialization, String address, String phoneNo, String physID, String description) {
         this.username = username;
         this.specialization = specialization;
         this.address = address;
-        this.phoneNumber = phoneNumber;
+        this.phoneNo = phoneNo;
+        this.physID = physID;
+        this.description = description;
     }
 
     // Getters
@@ -29,8 +33,16 @@ public class Doctor {
         return address;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhoneNo() {
+        return phoneNo;
+    }
+
+    public String getPhysID() {
+        return physID;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     // Setters
@@ -46,7 +58,15 @@ public class Doctor {
         this.address = address;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
+    }
+
+    public void setPhysID(String physID) {
+        this.physID = physID;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorViewHolder> {
@@ -21,11 +22,9 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorView
         this.context = context;
     }
 
-    // Method to update the list and refresh the RecyclerView
     public void updateList(List<Doctor> newDoctorList) {
-        doctorList.clear();
-        doctorList.addAll(newDoctorList);
-        notifyDataSetChanged();
+        doctorList = new ArrayList<>(newDoctorList); // Create a new list to avoid modifying the original list reference
+        notifyDataSetChanged(); // Notify RecyclerView to refresh with the new data
     }
 
     @NonNull
@@ -43,8 +42,7 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorView
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, BookingAppointment.class);
-            intent.putExtra("doctorName", doctor.getUsername());
-            intent.putExtra("doctorSpecialty", doctor.getSpecialization());
+            intent.putExtra("physID", doctor.getPhysID());
             context.startActivity(intent);
         });
     }
