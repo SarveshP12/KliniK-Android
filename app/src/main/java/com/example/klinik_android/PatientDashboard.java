@@ -102,12 +102,12 @@ public class PatientDashboard extends AppCompatActivity {
         });
 
         findViewById(R.id.btn_order_medicine).setOnClickListener(v -> {
-            Intent intent = new Intent(PatientDashboard.this, OrderMedicineActivity.class);
+            Intent intent = new Intent(PatientDashboard.this, OrderMedicine.class);
             startActivity(intent);
         });
 
         findViewById(R.id.btn_medical_records).setOnClickListener(v -> {
-            Intent intent = new Intent(PatientDashboard.this, ViewMedicalRecordsActivity.class);
+            Intent intent = new Intent(PatientDashboard.this, MedicalRecord.class);
             startActivity(intent);
         });
 
