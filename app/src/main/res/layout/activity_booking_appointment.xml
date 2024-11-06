@@ -29,6 +29,7 @@
 
         <!-- Doctor Image -->
         <ImageView
+            android:id="@+id/doctorPhotoImageView"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:src="@drawable/ic_profile"
@@ -126,40 +127,24 @@
         android:datePickerMode="spinner"
         android:calendarViewShown="false"
         android:focusedMonthDateColor="@color/dblue"
-        android:selectedDateVerticalBar="@color/dblue" />
+        android:selectedDateVerticalBar="@color/dblue"
+        android:background="@drawable/circle_background"/>
 
-    <!-- Time Buttons -->
-    <LinearLayout
+    <!-- Time Slot Spinner -->
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:paddingTop="8dp">
+        android:text="Select Time Slot"
+        android:textSize="16sp"
+        android:paddingTop="8dp" />
 
-        <!-- Example time buttons -->
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="10:00 AM"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/black"
-            android:layout_marginEnd="8dp" />
+    <TimePicker
+        android:id="@+id/timePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:timePickerMode="spinner"
+        android:layout_marginLeft=""/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="12:30 PM"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/black"
-            android:layout_marginEnd="8dp" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="3:45 PM"
-            android:backgroundTint="@color/dblue"
-            android:textColor="@color/white" />
-    </LinearLayout>
 
     <!-- Book Appointment Button -->
     <Button

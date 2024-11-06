@@ -1,72 +1,40 @@
 package com.example.klinik_android;
 
 public class Doctor {
+    private String physID;
     private String username;
     private String specialization;
     private String address;
     private String phoneNo;
-    private String physID;
     private String description;
+    private String photoUrl; // Add this field
 
-    // Required empty constructor for Firestore
-    public Doctor() {}
+    // Constructor, getters, and setters
 
-    public Doctor(String username, String specialization, String address, String phoneNo, String physID, String description) {
+    public Doctor() {
+        // Default constructor required for calls to DataSnapshot.getValue(User.class)
+    }
+
+    public Doctor(String physID, String username, String specialization, String address, String phoneNo, String description, String photoUrl) {
+        this.physID = physID;
         this.username = username;
         this.specialization = specialization;
         this.address = address;
         this.phoneNo = phoneNo;
-        this.physID = physID;
         this.description = description;
+        this.photoUrl = photoUrl;
     }
 
-    // Getters
-    public String getUsername() {
-        return username;
-    }
+    public String getPhysID() { return physID; }
+    public String getUsername() { return username; }
+    public String getSpecialization() { return specialization; }
+    public String getAddress() { return address; }
+    public String getPhoneNo() { return phoneNo; }
+    public String getDescription() { return description; }
+    public String getPhotoUrl() { return photoUrl; } // Add getter for photoUrl
 
-    public String getSpecialization() {
-        return specialization;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public String getPhoneNo() {
-        return phoneNo;
-    }
-
-    public String getPhysID() {
-        return physID;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    // Setters
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setSpecialization(String specialization) {
-        this.specialization = specialization;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setPhoneNo(String phoneNo) {
-        this.phoneNo = phoneNo;
-    }
-
-    public void setPhysID(String physID) {
-        this.physID = physID;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    // Add setter if needed
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
     }
 }

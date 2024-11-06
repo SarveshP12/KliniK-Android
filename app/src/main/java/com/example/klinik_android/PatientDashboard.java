@@ -156,7 +156,7 @@ public class PatientDashboard extends AppCompatActivity {
         UploadTask uploadTask = storageRef.putFile(imageUri);
         uploadTask.addOnSuccessListener(taskSnapshot -> storageRef.getDownloadUrl().addOnSuccessListener(uri -> {
             String downloadUrl = uri.toString();
-            db.collection("users").document(userId).update("profileImageUrl", downloadUrl)
+            db.collection("patients").document(userId).update("profileImageUrl", downloadUrl)
                     .addOnSuccessListener(aVoid -> Toast.makeText(PatientDashboard.this, "Profile image uploaded successfully!", Toast.LENGTH_SHORT).show())
                     .addOnFailureListener(e -> Toast.makeText(PatientDashboard.this, "Failed to save image URL: " + e.getMessage(), Toast.LENGTH_SHORT).show());
         })).addOnFailureListener(e -> Toast.makeText(PatientDashboard.this, "Failed to upload image: " + e.getMessage(), Toast.LENGTH_SHORT).show());
