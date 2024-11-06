@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main"
+    android:background="?android:attr/windowBackground"
+    android:padding="16dp">
+
+    <!-- Title for the Page -->
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Medical Records"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="16dp" />
+
+    <!-- Button to Add New Record -->
+    <Button
+        android:id="@+id/add_record_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add New Record"
+        android:layout_below="@id/title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+    <!-- Progress Bar (Spinner) to Show While Loading Records -->
+    <ProgressBar
+        android:id="@+id/loading_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/add_record_button"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        style="?android:attr/progressBarStyleLarge" />
+
+    <!-- No Records Text -->
+    <TextView
+        android:id="@+id/no_records_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No records available"
+        android:textSize="18sp"
+        android:layout_below="@id/loading_spinner"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        android:paddingTop="16dp" />
+
+    <!-- Scrollable Layout for Medical Records List -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/loading_spinner"
+        android:layout_marginTop="16dp">
+
+        <LinearLayout
+            android:id="@+id/records_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+</RelativeLayout>

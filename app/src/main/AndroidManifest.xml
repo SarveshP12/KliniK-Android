@@ -19,6 +19,15 @@
         android:theme="@style/Theme.KliniKAndroid"
         tools:targetApi="31">
         <activity
+            android:name=".ViewMedicalRecordsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PatientListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".patientlist"
+            android:exported="false" />
+        <activity
             android:name=".MedicalRecord"
             android:exported="false" />
         <activity
@@ -59,9 +68,6 @@
             android:exported="false" />
         <activity
             android:name=".BookingAppointmentActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ViewMedicalRecordsActivity"
             android:exported="false" />
         <activity
             android:name=".OrderMedicineActivity"
