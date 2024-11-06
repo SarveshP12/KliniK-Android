@@ -177,7 +177,8 @@ public class ViewMedicalRecordsActivity extends AppCompatActivity {
     }
 
     private void openPdf(String pdfUrl) {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(pdfUrl));
+        Intent intent = new Intent(this, PdfViewerActivity.class);
+        intent.putExtra("pdfUrl", pdfUrl);
         startActivity(intent);
     }
 }
