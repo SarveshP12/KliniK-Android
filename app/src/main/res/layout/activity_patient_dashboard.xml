@@ -89,33 +89,9 @@
 
         </LinearLayout>
 
-        <!-- Medical Records -->
-        <LinearLayout
-            android:id="@+id/btn_order_medicine"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_margin="25dp"
-            android:background="@drawable/card_background">
-            <ImageView
-                android:id="@+id/medical_records_icon"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:src="@drawable/ic_medical_records"
-                android:contentDescription="Medical Records" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Medical Records"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                android:gravity="center"/>
-        </LinearLayout>
-
         <!-- Ordering Medicines -->
         <LinearLayout
-            android:id="@+id/btn_medical_records"
+            android:id="@+id/btn_order_medicine"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:orientation="vertical"
@@ -132,6 +108,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Ordering Medicines"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <!-- Medical Records -->
+        <LinearLayout
+            android:id="@+id/btn_medical_records"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_margin="25dp"
+            android:background="@drawable/card_background">
+            <ImageView
+                android:id="@+id/medical_records_icon"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/ic_medical_records"
+                android:contentDescription="Medical Records" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Medical Records"
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:gravity="center"/>
