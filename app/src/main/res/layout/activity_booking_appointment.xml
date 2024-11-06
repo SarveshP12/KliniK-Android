@@ -1,160 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".BookingAppointment"
-    android:background="@drawable/med_background"
-    android:padding="16dp">
-
-    <!-- Doctor Details Section -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Doctor Details"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:paddingBottom="8dp" />
+    android:background="@drawable/med_background">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="8dp"
-        android:background="@drawable/circle_background">
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <!-- Doctor Image -->
-        <ImageView
-            android:id="@+id/doctorPhotoImageView"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/ic_profile"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/circle_background"
-            android:contentDescription="Doctor's Profile Image" />
+        <!-- Doctor Details Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Doctor Details"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingBottom="8dp" />
 
-        <!-- Doctor Info -->
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:background="@drawable/circle_background">
+
+            <!-- Doctor Image -->
+            <ImageView
+                android:id="@+id/doctorPhotoImageView"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/ic_profile"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/circle_background"
+                android:contentDescription="Doctor's Profile Image" />
+
+            <!-- Doctor Info -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/physidTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Physician ID"
+                    android:textSize="14sp"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/doctorNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Doctor Name"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/specialtyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Specialty"
+                    android:textSize="14sp"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- About Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="About"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingTop="12dp" />
+
+        <TextView
+            android:id="@+id/addressTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center_vertical">
+            android:text="Address"
+            android:textSize="14sp"
+            android:paddingTop="4dp"
+            android:textColor="@color/black" />
 
-            <TextView
-                android:id="@+id/physidTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Physician ID"
-                android:textSize="14sp"
-                android:textColor="@color/black" />
+        <TextView
+            android:id="@+id/phoneTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone"
+            android:textSize="14sp"
+            android:paddingTop="4dp"
+            android:textColor="@color/black" />
 
-            <TextView
-                android:id="@+id/doctorNameTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Doctor Name"
-                android:textSize="14sp"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
+        <TextView
+            android:id="@+id/descriptionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textSize="14sp"
+            android:paddingTop="4dp"
+            android:textColor="@color/black" />
 
-            <TextView
-                android:id="@+id/specialtyTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Specialty"
-                android:textSize="14sp"
-                android:textColor="@color/black" />
-        </LinearLayout>
+        <!-- Appointment Schedule Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Appointment Schedule"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingTop="12dp" />
+
+        <!-- Calendar View for Selecting Date -->
+        <DatePicker
+            android:id="@+id/calendarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:firstDayOfWeek="2"
+            android:datePickerMode="spinner"
+            android:calendarViewShown="false"
+            android:focusedMonthDateColor="@color/dblue"
+            android:selectedDateVerticalBar="@color/dblue"
+            android:background="@drawable/circle_background"/>
+
+        <!-- Time Slot Spinner -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Time Slot"
+            android:textSize="16sp"
+            android:paddingTop="8dp" />
+
+        <TimePicker
+            android:id="@+id/timePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:timePickerMode="spinner"
+            android:layout_gravity="center"/>
+
+        <!-- Book Appointment Button -->
+        <Button
+            android:id="@+id/bookAppointmentButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Book Appointment"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/dblue"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:padding="12dp" />
+
     </LinearLayout>
-
-    <!-- About Section -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="About"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:paddingTop="12dp" />
-
-    <TextView
-        android:id="@+id/addressTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Address"
-        android:textSize="14sp"
-        android:paddingTop="4dp"
-        android:textColor="@color/black" />
-
-    <TextView
-        android:id="@+id/phoneTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Phone"
-        android:textSize="14sp"
-        android:paddingTop="4dp"
-        android:textColor="@color/black" />
-
-    <TextView
-        android:id="@+id/descriptionTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Description"
-        android:textSize="14sp"
-        android:paddingTop="4dp"
-        android:textColor="@color/black" />
-
-    <!-- Appointment Schedule Section -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Appointment Schedule"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:paddingTop="12dp" />
-
-    <!-- Calendar View for Selecting Date -->
-    <DatePicker
-        android:id="@+id/calendarView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp"
-        android:firstDayOfWeek="2"
-        android:datePickerMode="spinner"
-        android:calendarViewShown="false"
-        android:focusedMonthDateColor="@color/dblue"
-        android:selectedDateVerticalBar="@color/dblue"
-        android:background="@drawable/circle_background"/>
-
-    <!-- Time Slot Spinner -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Select Time Slot"
-        android:textSize="16sp"
-        android:paddingTop="8dp" />
-
-    <TimePicker
-        android:id="@+id/timePicker"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:timePickerMode="spinner"/>
-
-
-    <!-- Book Appointment Button -->
-    <Button
-        android:id="@+id/bookAppointmentButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Book Appointment"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/dblue"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
-        android:padding="12dp" />
-
-</LinearLayout>
+</ScrollView>
