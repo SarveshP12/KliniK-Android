@@ -27,6 +27,7 @@ public class AddToCart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_to_cart);
 
+        // Initialize views
         medicineNameTextView = findViewById(R.id.medicineNameTextView);
         totalAmountTextView = findViewById(R.id.totalAmountTextView);
         addMoreItemsButton = findViewById(R.id.addMoreItemsButton);
@@ -36,12 +37,12 @@ public class AddToCart extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
 
         // Get data from the intent
-        String medicineName = getIntent().getStringExtra("medicine_name");
-        double totalAmount = getIntent().getDoubleExtra("total_amount", 0);
+        String medicineName = getIntent().getStringExtra("medicineName");
+        double price = getIntent().getDoubleExtra("price", 0.0);
 
         // Display the data
         medicineNameTextView.setText("Medicine: " + medicineName);
-        totalAmountTextView.setText("Total Amount: ₹" + totalAmount);
+        totalAmountTextView.setText("Total Amount: ₹" + price);
 
         // "Add More Items" button logic
         addMoreItemsButton.setOnClickListener(v -> {
@@ -51,7 +52,7 @@ public class AddToCart extends AppCompatActivity {
 
         // "Buy Medicine" button logic
         buyMedicineButton.setOnClickListener(v -> {
-            saveOrderToFirestore(medicineName, totalAmount);
+            saveOrderToFirestore(medicineName, price);
         });
     }
 
@@ -68,7 +69,7 @@ public class AddToCart extends AppCompatActivity {
         ordersRef.add(orderData)
                 .addOnSuccessListener(documentReference -> {
                     Toast.makeText(AddToCart.this, "Order placed successfully!", Toast.LENGTH_SHORT).show();
-                    // Optionally, you can navigate to another screen or finish the activity here
+                    // Optionally, navigate to another screen or finish the activity here
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(AddToCart.this, "Failed to place order. Try again.", Toast.LENGTH_SHORT).show();

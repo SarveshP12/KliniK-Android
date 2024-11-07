@@ -1,6 +1,7 @@
 package com.example.klinik_android;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,8 +39,10 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.Medici
         holder.quantityTextView.setText("Quantity: " + medicine.getQuantity());
 
         holder.addToCartButton.setOnClickListener(v -> {
-            // Here you can handle adding the medicine to the cart or any other action
-            Toast.makeText(context, medicine.getMedicine_name() + " added to cart.", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(context, AddToCart.class);
+            intent.putExtra("medicineName", medicine.getMedicine_name());
+            intent.putExtra("price", medicine.getPrice());
+            context.startActivity(intent);
         });
     }
 
