@@ -4,19 +4,22 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
 
 public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.MedicineViewHolder> {
-
-    private List<Medicine> medicineList;
     private Context context;
+    private List<Medicine> medicineList;
 
-    public MedicineAdapter(List<Medicine> medicineList, Context context) {
-        this.medicineList = medicineList;
+    public MedicineAdapter(Context context, List<Medicine> medicineList) {
         this.context = context;
+        this.medicineList = medicineList;
     }
 
     @NonNull
@@ -29,10 +32,15 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.Medici
     @Override
     public void onBindViewHolder(@NonNull MedicineViewHolder holder, int position) {
         Medicine medicine = medicineList.get(position);
-        holder.medicineNameTextView.setText(medicine.getMedicineName());
-        holder.expiryDateTextView.setText("Expiry Date: " + medicine.getExpiryDate());
+        holder.medicineNameTextView.setText(medicine.getMedicine_name());
+        holder.expiryDateTextView.setText("Expiry Date: " + medicine.getExpiry_date());
         holder.priceTextView.setText("Price: ₹" + medicine.getPrice());
         holder.quantityTextView.setText("Quantity: " + medicine.getQuantity());
+
+        holder.addToCartButton.setOnClickListener(v -> {
+            // Here you can handle adding the medicine to the cart or any other action
+            Toast.makeText(context, medicine.getMedicine_name() + " added to cart.", Toast.LENGTH_SHORT).show();
+        });
     }
 
     @Override
@@ -42,6 +50,7 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.Medici
 
     public static class MedicineViewHolder extends RecyclerView.ViewHolder {
         TextView medicineNameTextView, expiryDateTextView, priceTextView, quantityTextView;
+        Button addToCartButton;
 
         public MedicineViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -49,6 +58,7 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.Medici
             expiryDateTextView = itemView.findViewById(R.id.expiryDateTextView);
             priceTextView = itemView.findViewById(R.id.priceTextView);
             quantityTextView = itemView.findViewById(R.id.quantityTextView);
+            addToCartButton = itemView.findViewById(R.id.addToCartButton);
         }
     }
 }

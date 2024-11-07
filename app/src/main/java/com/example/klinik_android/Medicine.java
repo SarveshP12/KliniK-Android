@@ -1,51 +1,40 @@
 package com.example.klinik_android;
 
 public class Medicine {
+    private int medicineID;
     private String medicine_name;
-    private String expiry_date;
-    private double price;
     private int quantity;
+    private double price;
+    private String expiry_date;
 
-    public Medicine() {
-        // Required empty constructor for Firebase
-    }
+    // No-argument constructor required for Firebase
+    public Medicine() {}
 
-    public Medicine(String medicine_name, String expiry_date, double price, int quantity) {
+    public Medicine(int medicineID, String medicine_name, int quantity, double price, String expiry_date) {
+        this.medicineID = medicineID;
         this.medicine_name = medicine_name;
-        this.expiry_date = expiry_date;
-        this.price = price;
         this.quantity = quantity;
-    }
-
-    public String getMedicineName() {
-        return medicine_name;
-    }
-
-    public void setMedicineName(String medicine_name) {
-        this.medicine_name = medicine_name;
-    }
-
-    public String getExpiryDate() {
-        return expiry_date;
-    }
-
-    public void setExpiryDate(String expiry_date) {
+        this.price = price;
         this.expiry_date = expiry_date;
     }
 
-    public double getPrice() {
-        return price;
+    public int getMedicineID() {
+        return medicineID;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public String getMedicine_name() {
+        return medicine_name;
     }
 
     public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public double getPrice() {
+        return price;
+    }
+
+    public String getExpiry_date() {
+        return expiry_date;
     }
 }
